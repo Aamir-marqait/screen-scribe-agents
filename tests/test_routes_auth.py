@@ -45,3 +45,16 @@ def test_assignments_evaluate_requires_auth():
         },
     )
     assert r.status_code == 401
+
+
+def test_scripts_analyze_requires_auth():
+    r = client.post(
+        "/api/scripts/analyze",
+        json={"Type": "assignment", "file_url": "https://example.com/x.pdf"},
+    )
+    assert r.status_code == 401
+
+
+def test_scripts_status_requires_auth():
+    r = client.get("/api/scripts/analyze/status/some-job-id")
+    assert r.status_code == 401

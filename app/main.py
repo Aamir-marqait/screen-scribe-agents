@@ -3,7 +3,7 @@ from contextlib import asynccontextmanager
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from app.api.routes import assignments, health, mentor, notes, quizzes
+from app.api.routes import assignments, health, mentor, notes, quizzes, scripts
 from app.config import get_settings
 
 
@@ -34,6 +34,7 @@ def create_app() -> FastAPI:
     app.include_router(assignments.router, prefix="/api/assignments", tags=["assignments"])
     app.include_router(quizzes.router, prefix="/api/quizzes", tags=["quizzes"])
     app.include_router(mentor.router, prefix="/api/mentor", tags=["mentor"])
+    app.include_router(scripts.router, prefix="/api/scripts", tags=["scripts"])
 
     return app
 

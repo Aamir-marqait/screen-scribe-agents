@@ -1,0 +1,145 @@
+analyze_script_weekly:
+  description: >
+    Analyze the following student script (extracted from PDF). Read carefully
+    and base every observation strictly on what is on the page. Do not guess
+    intent or fabricate anything not in the script.
+
+    Script text:
+    ---
+    {script_text}
+    ---
+
+    Hard rules:
+    - No fabricated scenes, characters, or intentions.
+    - No file types, no knowledge sources, no PDFs, no extensions.
+    - No emojis (other than the ones in the output structure below), no jokes,
+      no casual tone, no self-references.
+    - Be detailed and specific — no vague praise or empty advice.
+    - Cover every section in the structure below; do not skip any.
+
+    Output exactly this structure (use every time):
+
+    📘 Script Title: [Extracted or Inferred Title]
+    🎯 Submitted Idea: [Logline or concept in 1-2 lines]
+
+    🧠 OVERALL VERDICT:
+    [Direct summary judgment. Promising? Underdeveloped? Structurally
+    unclear? Near submission ready?]
+    Address: What is the spine of the film? Identify the central dramatic
+    through-line that holds the narrative together. Is it clear and
+    consistently followed?
+
+    🔍 ANALYSIS BREAKDOWN:
+    1. Concept & Originality
+    2. Structure & Pacing
+    3. Character Development
+    4. Dialogue Quality
+    5. Theme & Message
+    6. Formatting & Professionalism
+    7. Market Readiness
+
+    For each: cover the questions implied by the section name (originality
+    of concept, sustained vs forced choices, scene transitions, character
+    psychology, subtext, theme integration, screenplay formatting, short-film
+    market standards). Tie each section back to whether it strengthens or
+    weakens the spine of the film.
+
+    🎬 Scene by Scene Improvement Evaluation
+    For every scene in the script, give:
+      Scene Number or Heading: [Scene reference]
+      Scene Structure: [working / how to improve]
+      Dialogue Writing: [working / how to tighten or sharpen]
+      Plot or Character Development Through the Scene: [what changes; how
+      it could advance the spine]
+    Do not rewrite scenes; analyse and guide.
+
+    🛠️ RECOMMENDATIONS:
+    - What needs rewriting vs refinement
+    - Structural tightening
+    - Setups and payoffs
+    - Character motivation before dramatic turns
+    - Dialogue economy and subtext
+    - Workshop strategies (table reads, beat breakdowns)
+
+    📊 SCORECARD (Out of 10 per category):
+    | Category | Score |
+    |---|---|
+    | Concept & Originality | ?/10 |
+    | Structure & Pacing | ?/10 |
+    | Characters | ?/10 |
+    | Dialogue | ?/10 |
+    | Theme & Message | ?/10 |
+    | Formatting | ?/10 |
+    | Market Readiness | ?/10 |
+    | Total | ??/70 |
+
+    🎓 Mentor's Note:
+    [Final encouraging thought. Acknowledge effort. State whether the script
+    is ready for submission or requires structured revision. Constructive
+    academic tone.]
+  expected_output: >
+    A single markdown analysis following the structure above exactly.
+    No preamble, no commentary outside the markdown.
+
+analyze_script_semester:
+  description: >
+    Analyze the following long-form student script (documentary, short film,
+    feature film, or episodic content). Read carefully. Stay strictly on the
+    page; do not guess intent or fabricate anything.
+
+    Script text:
+    ---
+    {script_text}
+    ---
+
+    Hard rules: same as the weekly task — no fabrication, no file references,
+    no casual tone, no self-references, no skipped sections.
+
+    Output structure (use every time):
+
+    Script Title: [Extracted or Inferred Title]
+    Submitted Idea: [Logline or concept in 1-2 lines]
+
+    OVERALL VERDICT:
+    Direct summary judgment. Address: What is the spine of the film? Is the
+    spine clear and consistently sustained from beginning to end? Does every
+    major scene support or weaken this spine?
+
+    ANALYSIS BREAKDOWN:
+    1. Concept & Originality (does the spine emerge naturally from concept?)
+    2. Structure & Pacing (does structure intensify conflict progressively?)
+    3. Character Development (do arcs reinforce the spine?)
+    4. Dialogue Quality (subtext, earned confrontations)
+    5. Theme & Message (does theme reinforce the spine?)
+    6. Formatting & Professionalism
+    7. Market Readiness
+
+    Scene by Scene Improvement Evaluation:
+    For every scene:
+      Scene Number or Heading: [Scene reference]
+      Scene Structure: [objective, conflict, outcome; spine alignment]
+      Dialogue Writing: [character-specificity, tension, subtext]
+      Plot or Character Development Through the Scene: [what changes; how
+      it connects to the spine]
+    Do not rewrite scenes; analyse and guide.
+
+    RECOMMENDATIONS:
+    - What needs rewriting vs refinement
+    - Structural tightening
+    - Setups and payoffs
+    - Character motivation before dramatic turns
+    - Dialogue economy and subtext
+    - Workshop strategies (table reads, beat mapping, scene-objective analysis)
+
+    Mentor's Note:
+    Encouraging closing. Acknowledge the student's effort. Clarify whether
+    the script is ready for submission or needs revision. Recommend 2-3
+    specific chapters or sections from study materials that would support
+    the current draft. End with this exact closing line:
+
+    "Thanks for submitting your work. Every script takes time to grow, and
+    what matters most is your ability to reflect, revise, and keep writing.
+    Stay focused, and do not hesitate to ask for support if you need it."
+  expected_output: >
+    A single markdown analysis following the structure above exactly.
+    No preamble, no commentary outside the markdown.
