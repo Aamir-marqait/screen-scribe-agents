@@ -1,0 +1,130 @@
+# Subtopic -> reading materials. Ported verbatim from n8n workflow "Mentor"
+# (Code node) — see screen-scribe-pilot/docs/n8n-exports/Mentor.api.json.
+# Keys are lowercased subtopics. Values: list of 1-2 reading material titles.
+
+"film analysis":
+  - "How to Read a Film_ Movies, Media, and Beyond"
+  - "Film Art_ An Introduction 10th Edition (PDFDrive)"
+"different approaches to shoot and types of film":
+  - "Film Art_ An Introduction 10th Edition (PDFDrive)"
+"case studies of filmmakers and their approach":
+  - "Film Art_ An Introduction 10th Edition (PDFDrive)"
+"case studies of filmmakers in historical perspective":
+  - "Film Art_ An Introduction 10th Edition (PDFDrive)"
+"writing actuality report":
+  - "Ways of Seeing"
+"film diary (analysis of films, director and scripts, thoughts, ideas/stories,scenes, photographs)":
+  - "How to Read a Film_ Movies, Media, and Beyond"
+  - "Film Art_ An Introduction 10th Edition (PDFDrive)"
+"introduction to visual storytelling (composition, cutting, closeup, continuity, camera angle)":
+  - "The Five C's of Cinematography_ Motion Picture Filming Techniques"
+"recreating a painting":
+  - "Ways of Seeing"
+"collaboration with camera, edit and sound":
+  - "The Five C's of Cinematography_ Motion Picture Filming Techniques"
+"turning actualities into stories (writing on observation)":
+  - "Screenplay; The Foundations of Screenwriting - Syd Field"
+"trip to closed public space (e.g. library, museum)":
+  - "Ways of Seeing"
+"trip to an open public space (e.g. park, market place, bus stop)":
+  - "Ways of Seeing"
+"decoupage (cutting scripts and planning visual for cinematic connection) and continuity":
+  - "Film editing - Karel Reisz"
+"aspects of continuity":
+  - "The Five C's of Cinematography_ Motion Picture Filming Techniques"
+"time and space in films":
+  - "Bruce Block - The Visual Story"
+"scene analysis of classical hollywood films and contemporary films":
+  - "Bruce Block - The Visual Story"
+"research":
+  - "On Writing - Stephen King"
+"types of stories":
+  - "Short stories by Guy de Maupassant"
+"developing a concept":
+  - "On Writing - Stephen King"
+"usage of vfx elements":
+  - "Short stories by Guy de Maupassant"
+  - "On Writing - Stephen King"
+"oral narrative skills":
+  - "On Writing - Stephen King"
+"creative writing (personal memoir, descriptive writing)":
+  - "On Writing - Stephen King"
+"reading and analysis of short stories":
+  - "Short stories by Guy de Maupassant"
+  - "The Stories of Anton Chekhov"
+"history of storytelling":
+  - "Screenplay; The Foundations of Screenwriting - Syd Field"
+"screenplay writing - overview and process":
+  - "Screenplay; The Foundations of Screenwriting - Syd Field"
+"elements of a screenplay":
+  - "Screenplay; The Foundations of Screenwriting - Syd Field"
+  - "The Anatomy of Story - John Truby"
+"premise, plot, treatment, characters, conflict":
+  - "Screenplay; The Foundations of Screenwriting - Syd Field"
+  - "Art of Dramatic Writing - Lajos Egri"
+"screenwriting softwares":
+  - "https://www.celtx.com/ and https://www.studiovity.com/"
+"introductions to story structures  - i (three-act structure, 5 act structure)":
+  - "Save the Cat - Blake Snyder"
+  - "Aristotle's Poetics"
+"creating simple screenplays using 3 act structure":
+  - "Save the Cat - Blake Snyder"
+"understanding the concept of staging and blocking":
+  - "Film Directing Shot by Shot"
+  - "Bruce Block - The Visual Story"
+"types of staging and blocking":
+  - "Film Directing Shot by Shot"
+  - "Bruce Block - The Visual Story"
+"usage of props and space":
+  - "Film Directing Shot by Shot"
+  - "Bruce Block - The Visual Story"
+"i, a, l, c, s patterns":
+  - "Film Directing Shot by Shot"
+  - "Bruce Block - The Visual Story"
+"blocking for vfx":
+  - "Film Directing Shot by Shot"
+  - "Bruce Block - The Visual Story"
+"staging a scene with actors":
+  - "Becoming an Actor's Director - Regge Life"
+  - "Directing Actors - Judith Weston"
+"exercise on improvisation":
+  - "Becoming an Actor's Director - Regge Life"
+"styles of acting":
+  - "Directing Actors - Judith Weston"
+"difference between stage and film acting":
+  - "Directing Actors - Judith Weston"
+"working with virtual/digital actors : possibilities & limitations":
+  - "Directing Actors - Judith Weston"
+"dialogue – acting - composition-staging and blocking along with use of visualization tools like":
+  - "IDS SEM I-SPW"
+  - "IDS SEM II - parameters_dialogue"
+"traditional/digital storyboards & ai tools for mood boards":
+  - "IDS SEM I-SPW"
+  - "IDS SEM II - parameters_dialogue"
+"dialogue, monologue and conversation":
+  - "Dialogue - Robert McKee"
+  - "On Dialogue"
+"types of dialogue":
+  - "Dialogue - Robert McKee"
+  - "On Dialogue"
+"writing effective dialogue":
+  - "Dialogue - Robert McKee"
+  - "On Dialogue"
+"dialogue through observation":
+  - "Dialogue - Robert McKee"
+  - "On Dialogue"
+"dialogue in a situation":
+  - "Dialogue - Robert McKee"
+  - "On Dialogue"
+"story structures ii (hero's journey, dan harmon story circle)":
+  - "The Writer's Journey"
+  - "On Dialogue"
+"creating effective story conflicts":
+  - "Dialogue - Robert McKee"
+  - "On Dialogue"
+"usage of edit, sound and bgm from director's point of view":
+  - "Film editing - Karel Reisz"
+"tonalities of dialogue":
+  - "Dialogue - Robert McKee"
+"space and action dynamics":
+  - "Bruce Block - The Visual Story"

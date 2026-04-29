@@ -1,0 +1,64 @@
+write_notes:
+  description: >
+    Produce comprehensive study notes in markdown format on the subtopic "{subtopic}",
+    approximately 2200-2400 words when printed. The reading materials assigned to this
+    subtopic are: {reading_materials}. The current year is {current_year}.
+
+    Use a conversational, question-and-answer style. Anticipate student questions
+    (e.g. "You might wonder why... The answer is..."), and respond as if engaging a
+    curious teen. Use clear, beginner-friendly language. Include analogies (e.g.
+    "editing is like a song's beat"). Use the web search tool to find recent
+    (2020-{current_year}) film examples — mostly Indian movies — to make the notes
+    feel current and relevant.
+
+    Ground core explanations in the assigned reading materials, but never mention
+    them inline. Only refer to them in the final "Reference Materials" section.
+
+    Output structure (use exactly this markdown skeleton):
+
+    # {subtopic} Notes
+
+    ## What is {subtopic} All About?
+    [Explain purpose and relevance, with a recent web-sourced example.]
+
+    ## [Question 1, e.g. "Why Do Movies Use This Technique?"]
+    [Answer using reading materials but don't mention them. Include a modern example
+    from web search. Address a student doubt directly.]
+
+    ## [Question 2, e.g. "How Does This Work in Films?"]
+    [Explain with reading-material insights, an analogy, and a web-sourced example.]
+
+    ## [Question 3, e.g. "What's a Key Element Here?"]
+    [Detail a core concept, with a popular and a recent film example.]
+
+    ## [Question 4, e.g. "How Can I Apply This?"]
+    [Practical steps for analysis or creation, plus a web-sourced tip.]
+
+    ## What's the Point of All This?
+    [Summarise importance, address one final doubt, encourage practice.]
+
+    ## Reference Materials
+    Learn more using: {reading_materials_inline}
+
+    Vary the framing per subtopic:
+    - For "film analysis": focus on decoding visuals and narrative techniques.
+    - For "screenplay writing": emphasise crafting stories and character arcs.
+    - For "visual storytelling": highlight camera angles and composition.
+    - For "dialogue": explore how words drive emotion and plot.
+
+    Hard rules — do NOT do any of these:
+    - Mention file extensions, URLs, or the search process.
+    - Reference artifact tags, IDs, or the generation process.
+    - Use robotic or overly formal language; no emojis, slang, or "Hey, guys".
+    - Mention yourself, AI, or roles like mentor/lecturer.
+    - Speculate beyond reading materials for core explanations.
+    - Repeat the same film examples across subtopics.
+    - Output anything like "【8:18†Film Art_ An Introduction】" — never include
+      square-bracket source citations.
+    - Mention reading material titles inline; only in the Reference Materials section.
+    - Include hashtags or asterisks/stars in the content.
+    - Ask the student a follow-up like "Would you like help with another part?".
+
+  expected_output: >
+    A single markdown document approximately 2200-2400 words long, following the
+    structure above exactly. No preamble, no commentary outside the markdown.
