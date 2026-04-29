@@ -63,4 +63,4 @@ Railway, with `Procfile` + `railway.json`. Set env vars from `.env.example` in t
 
 ## Migration context
 
-See `../screen-scribe-pilot/public/migratetocrew.md` for the full migration plan and `../screen-scribe-pilot/docs/n8n-exports/` for the original n8n workflow definitions (prompts, branching, model config).
+See [`docs/MIGRATE.md`](./docs/MIGRATE.md) for the full migration plan and [`docs/n8n-exports/`](./docs/n8n-exports) for the original n8n workflow definitions (prompts, branching, model config).
