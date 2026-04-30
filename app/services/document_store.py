@@ -28,28 +28,44 @@ def _public_url(filename: str) -> str:
     return f"{base}/storage/v1/object/public/{BUCKET}/{encoded}"
 
 
+async def _try_fetch(filename: str) -> str:
+    """Try to download+extract a single concrete filename. Returns ``""`` on any failure."""
+    url = _public_url(filename)
+    lower = filename.lower()
+    try:
+        if lower.endswith(".pdf"):
+            return await fetch_pdf_text(url)
+        if lower.endswith((".docx", ".doc")):
+            return await fetch_docx_text(url)
+    except Exception:
+        return ""
+    return ""
+
+
 async def get_document_text(filename: str) -> str:
     """Return extracted text for one curriculum document.
 
-    Returns ``""`` for entries that aren't real files (URLs, Google Doc
-    titles without an extension, missing uploads) so callers can pass any
-    reading-material entry through without pre-filtering.
+    Returns ``""`` for entries that aren't real files (URLs, missing uploads)
+    so callers can pass any reading-material entry through without pre-filtering.
+
+    notes_crew's reading_materials.yaml lists titles WITHOUT an extension
+    (e.g. ``Short stories by Guy de Maupassant``), while quiz_crew uses
+    ``.pdf``-suffixed names. To support both without mutating either YAML,
+    when the name has no known extension we try ``.pdf`` then ``.docx``.
     """
     if not filename or filename.startswith("http"):
         return ""
     if filename in _CACHE:
         return _CACHE[filename]
-    url = _public_url(filename)
+
     lower = filename.lower()
-    try:
-        if lower.endswith(".pdf"):
-            text = await fetch_pdf_text(url)
-        elif lower.endswith((".docx", ".doc")):
-            text = await fetch_docx_text(url)
-        else:
-            text = ""
-    except Exception:
-        text = ""
+    if lower.endswith((".pdf", ".docx", ".doc")):
+        text = await _try_fetch(filename)
+    else:
+        text = await _try_fetch(filename + ".pdf")
+        if not text:
+            text = await _try_fetch(filename + ".docx")
+
     _CACHE[filename] = text
     return text
 

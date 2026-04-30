@@ -10,6 +10,7 @@ import yaml
 from crewai import Agent, Crew, Process, Task
 
 from app.config import get_settings
+from app.services.document_store import get_documents_text
 
 CREW_DIR = Path(__file__).parent
 DATA_DIR = CREW_DIR / "data"
@@ -51,6 +52,12 @@ async def generate_quiz(subtopic: str) -> str:
     settings = get_settings()
     materials = lookup_reading_materials(subtopic)
     materials_block = ", ".join(materials) if materials else "(none assigned)"
+    materials_content = await get_documents_text(materials)
+    materials_content_block = (
+        materials_content
+        if materials_content
+        else "(no full-text content available — rely on general knowledge)"
+    )
 
     agent_cfg = _load_yaml("agents.yaml")["quiz_writer"]
     task_cfg = _load_yaml("tasks.yaml")["write_quiz"]
@@ -67,6 +74,7 @@ async def generate_quiz(subtopic: str) -> str:
         description=task_cfg["description"].format(
             subtopic=subtopic,
             reading_materials=materials_block,
+            reading_materials_content=materials_content_block,
         ),
         expected_output=task_cfg["expected_output"],
         agent=agent,

@@ -5,6 +5,13 @@ generate_assignment:
     expectations of this institutional evaluation document:
     {evaluation_document}.
 
+    Full text of the evaluation document (use this as the authoritative
+    source for rubric criteria, task framing, and tone — never paste it
+    verbatim or mention the document inline):
+    ===== EVALUATION DOCUMENT BEGIN =====
+    {evaluation_document_content}
+    ===== EVALUATION DOCUMENT END =====
+
     Hard rules:
     - Base the assignment on the official knowledge source for the subtopic.
       Do not invent theories, frameworks, or external references.
@@ -71,6 +78,12 @@ revise_assignment:
 
     Subtopic: "{subtopic}"
     Evaluation document: {evaluation_document}
+
+    Full text of the evaluation document (authoritative reference for
+    rubric and tone — never quote it verbatim or name it inline):
+    ===== EVALUATION DOCUMENT BEGIN =====
+    {evaluation_document_content}
+    ===== EVALUATION DOCUMENT END =====
 
     Original assignment:
     ---

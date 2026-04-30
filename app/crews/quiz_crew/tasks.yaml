@@ -3,6 +3,13 @@ write_quiz:
     Subtopic: "{subtopic}"
     Reading materials: {reading_materials}
 
+    Full text of the assigned reading materials (use as your primary grounding
+    source — base every question on these passages, but never paste them
+    verbatim or mention these documents inline):
+    ===== READING MATERIALS BEGIN =====
+    {reading_materials_content}
+    ===== READING MATERIALS END =====
+
     Create exactly 5 MCQ questions based solely on the content of the reading
     materials above, scoped to the subtopic.
 

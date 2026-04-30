@@ -8,6 +8,7 @@ import yaml
 from crewai import Agent, Crew, Process, Task
 
 from app.config import get_settings
+from app.services.document_store import get_document_text
 
 CREW_DIR = Path(__file__).parent
 DATA_DIR = CREW_DIR / "data"
@@ -41,13 +42,21 @@ def _build_agent() -> Agent:
     )
 
 
+async def _evaluation_document_content(filename: str) -> str:
+    text = await get_document_text(filename) if filename else ""
+    return text if text else "(no full-text content available — rely on the document name and general knowledge)"
+
+
 async def generate_assignment(subtopic: str) -> str:
     agent = _build_agent()
     tasks_cfg = _load_yaml("tasks.yaml")["generate_assignment"]
+    eval_doc = lookup_evaluation_document(subtopic)
+    eval_doc_content = await _evaluation_document_content(eval_doc)
     task = Task(
         description=tasks_cfg["description"].format(
             subtopic=subtopic,
-            evaluation_document=lookup_evaluation_document(subtopic),
+            evaluation_document=eval_doc,
+            evaluation_document_content=eval_doc_content,
         ),
         expected_output=tasks_cfg["expected_output"],
         agent=agent,
@@ -60,10 +69,13 @@ async def generate_assignment(subtopic: str) -> str:
 async def revise_assignment(subtopic: str, content: str, changes: str) -> str:
     agent = _build_agent()
     tasks_cfg = _load_yaml("tasks.yaml")["revise_assignment"]
+    eval_doc = lookup_evaluation_document(subtopic)
+    eval_doc_content = await _evaluation_document_content(eval_doc)
     task = Task(
         description=tasks_cfg["description"].format(
             subtopic=subtopic,
-            evaluation_document=lookup_evaluation_document(subtopic),
+            evaluation_document=eval_doc,
+            evaluation_document_content=eval_doc_content,
             content=content,
             changes=changes,
         ),
