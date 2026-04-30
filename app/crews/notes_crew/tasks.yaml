@@ -4,6 +4,13 @@ write_notes:
     approximately 2200-2400 words when printed. The reading materials assigned to this
     subtopic are: {reading_materials}. The current year is {current_year}.
 
+    Full text of the assigned reading materials (use as your primary grounding
+    source — quote ideas faithfully, but never paste passages verbatim or
+    mention these documents inline):
+    ===== READING MATERIALS BEGIN =====
+    {reading_materials_content}
+    ===== READING MATERIALS END =====
+
     Use a conversational, question-and-answer style. Anticipate student questions
     (e.g. "You might wonder why... The answer is..."), and respond as if engaging a
     curious teen. Use clear, beginner-friendly language. Include analogies (e.g.

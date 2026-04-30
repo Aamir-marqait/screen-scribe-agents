@@ -9,6 +9,7 @@ import yaml
 from crewai import Agent, Crew, Process, Task
 
 from app.config import get_settings
+from app.services.document_store import get_documents_text
 from app.tools.tavily_search import build_tavily_tool
 
 CREW_DIR = Path(__file__).parent
@@ -30,12 +31,18 @@ def lookup_reading_materials(subtopic: str) -> list[str]:
     return materials.get(subtopic.strip().lower(), [])
 
 
-def _build_crew(subtopic: str, reading_materials: list[str]) -> Crew:
+async def _build_crew(subtopic: str, reading_materials: list[str]) -> Crew:
     settings = get_settings()
     agents_cfg = _load_yaml("agents.yaml")
     tasks_cfg = _load_yaml("tasks.yaml")
 
     materials_block = ", ".join(reading_materials) if reading_materials else "(none assigned)"
+    materials_content = await get_documents_text(reading_materials)
+    materials_content_block = (
+        materials_content
+        if materials_content
+        else "(no full-text content available — rely on general knowledge)"
+    )
 
     tools = []
     tavily = build_tavily_tool()
@@ -57,6 +64,7 @@ def _build_crew(subtopic: str, reading_materials: list[str]) -> Crew:
             subtopic=subtopic,
             reading_materials=materials_block,
             reading_materials_inline=materials_block,
+            reading_materials_content=materials_content_block,
             current_year=datetime.utcnow().year,
         ),
         expected_output=tasks_cfg["write_notes"]["expected_output"],
@@ -74,6 +82,6 @@ async def generate_notes(subtopic: str) -> str:
     """
 
     reading_materials = lookup_reading_materials(subtopic)
-    crew = _build_crew(subtopic, reading_materials)
+    crew = await _build_crew(subtopic, reading_materials)
     result = await asyncio.to_thread(crew.kickoff, inputs={"subtopic": subtopic})
     return str(result)

@@ -1,9 +1,9 @@
 """Download a file by URL and extract text from it.
 
 Mirrors the n8n flow used by the script analyzer and assignment evaluator:
-HTTP Request (download bytes) -> Extract from File (PDF -> text). The URL is
-typically a Supabase Storage URL provided by the frontend; from the
-backend's perspective it's just an HTTP fetch.
+HTTP Request (download bytes) -> Extract from File (PDF/DOCX -> text). The
+URL is typically a Supabase Storage URL; from the backend's perspective
+it's just an HTTP fetch.
 """
 
 from __future__ import annotations
@@ -11,6 +11,7 @@ from __future__ import annotations
 from io import BytesIO
 
 import httpx
+from docx import Document
 from pypdf import PdfReader
 
 DEFAULT_TIMEOUT = 60  # seconds; PDFs can be large
@@ -34,6 +35,16 @@ def extract_pdf_text(data: bytes) -> str:
     return "\n".join(parts).strip()
 
 
+def extract_docx_text(data: bytes) -> str:
+    doc = Document(BytesIO(data))
+    return "\n".join(p.text for p in doc.paragraphs if p.text.strip()).strip()
+
+
 async def fetch_pdf_text(url: str) -> str:
     data = await download_bytes(url)
     return extract_pdf_text(data)
+
+
+async def fetch_docx_text(url: str) -> str:
+    data = await download_bytes(url)
+    return extract_docx_text(data)
