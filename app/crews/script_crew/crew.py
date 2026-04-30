@@ -54,7 +54,7 @@ async def analyze_script(script_text: str, schedule: ScheduleType) -> str:
         role=agent_cfg["role"],
         goal=agent_cfg["goal"],
         backstory=agent_cfg["backstory"],
-        llm=settings.openai_model,
+        llm=settings.llm_model,
         allow_delegation=False,
         verbose=False,
     )

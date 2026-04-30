@@ -35,7 +35,7 @@ def _build_agent() -> Agent:
         role=cfg["role"],
         goal=cfg["goal"],
         backstory=cfg["backstory"],
-        llm=settings.openai_model,
+        llm=settings.llm_model,
         allow_delegation=False,
         verbose=False,
     )

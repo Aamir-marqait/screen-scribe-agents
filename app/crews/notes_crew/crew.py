@@ -46,7 +46,7 @@ def _build_crew(subtopic: str, reading_materials: list[str]) -> Crew:
         role=agents_cfg["notes_writer"]["role"],
         goal=agents_cfg["notes_writer"]["goal"],
         backstory=agents_cfg["notes_writer"]["backstory"],
-        llm=settings.openai_model,
+        llm=settings.llm_model,
         tools=tools,
         allow_delegation=False,
         verbose=False,
