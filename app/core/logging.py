@@ -64,6 +64,22 @@ def get_logger(name: str) -> logging.Logger:
     return logging.getLogger(name)
 
 
+_RESERVED_LOGRECORD_KEYS = set(
+    logging.LogRecord("", 0, "", 0, "", None, None).__dict__.keys()
+) | {"message", "asctime"}
+
+
 def log_extra(**fields: Any) -> dict[str, Any]:
-    """Helper so call-sites can write ``logger.info("msg", extra=log_extra(...))``."""
-    return fields
+    """Helper so call-sites can write ``logger.info("msg", extra=log_extra(...))``.
+
+    Auto-prefixes any key that collides with a reserved ``LogRecord`` attribute
+    (``filename``, ``module``, ``name``, ``message``, ...) with ``ctx_`` so the
+    stdlib logger doesn't raise ``"Attempt to overwrite 'X' in LogRecord"``.
+    """
+    safe: dict[str, Any] = {}
+    for key, value in fields.items():
+        if key in _RESERVED_LOGRECORD_KEYS:
+            safe[f"ctx_{key}"] = value
+        else:
+            safe[key] = value
+    return safe

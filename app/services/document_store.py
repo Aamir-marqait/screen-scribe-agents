@@ -46,14 +46,14 @@ async def get_document_text(filename: str) -> str:
     if not filename or filename.startswith("http"):
         logger.info(
             "curriculum.skip",
-            extra=log_extra(filename=filename, reason="not_a_bucket_file"),
+            extra=log_extra(doc=filename, reason="not_a_bucket_file"),
         )
         return ""
     if filename in _CACHE:
         cached = _CACHE[filename]
         logger.info(
             "curriculum.cache_hit",
-            extra=log_extra(filename=filename, chars=len(cached), empty=not cached),
+            extra=log_extra(doc=filename, chars=len(cached), empty=not cached),
         )
         return cached
 
@@ -73,7 +73,7 @@ async def get_document_text(filename: str) -> str:
             logger.info(
                 "curriculum.fetch_ok",
                 extra=log_extra(
-                    filename=filename,
+                    doc=filename,
                     resolved=base + ".txt",
                     chars=len(text),
                     duration_ms=duration_ms,
@@ -83,7 +83,7 @@ async def get_document_text(filename: str) -> str:
             logger.warning(
                 "curriculum.fetch_empty",
                 extra=log_extra(
-                    filename=filename,
+                    doc=filename,
                     resolved=base + ".txt",
                     duration_ms=duration_ms,
                 ),
@@ -93,7 +93,7 @@ async def get_document_text(filename: str) -> str:
         logger.warning(
             "curriculum.fetch_failed",
             extra=log_extra(
-                filename=filename,
+                doc=filename,
                 resolved=base + ".txt",
                 url=url,
                 duration_ms=duration_ms,
@@ -114,7 +114,7 @@ async def get_documents_text(filenames: list[str]) -> str:
 
     logger.info(
         "curriculum.lookup_start",
-        extra=log_extra(count=len(filenames), filenames=filenames),
+        extra=log_extra(count=len(filenames), docs=filenames),
     )
 
     parts: list[str] = []
