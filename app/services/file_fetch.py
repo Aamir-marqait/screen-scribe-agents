@@ -48,3 +48,8 @@ async def fetch_pdf_text(url: str) -> str:
 async def fetch_docx_text(url: str) -> str:
     data = await download_bytes(url)
     return extract_docx_text(data)
+
+
+async def fetch_plain_text(url: str) -> str:
+    data = await download_bytes(url)
+    return data.decode("utf-8", errors="replace").strip()

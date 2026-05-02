@@ -15,11 +15,18 @@ write_notes:
     (e.g. "You might wonder why... The answer is..."), and respond as if engaging a
     curious teen. Use clear, beginner-friendly language. Include analogies (e.g.
     "editing is like a song's beat"). Use the web search tool to find recent
-    (2020-{current_year}) film examples — mostly Indian movies — to make the notes
-    feel current and relevant.
+    (2020-{current_year}) film examples for the notes. Across the entire document,
+    use at least 4 distinct film examples, with at least 3 of them being Indian
+    films released in 2020 or later. Do not reuse the same film in more than one
+    section.
 
     Ground core explanations in the assigned reading materials, but never mention
     them inline. Only refer to them in the final "Reference Materials" section.
+    Each of the four question sections must explain at least one specific concept,
+    principle, or technique drawn from the reading materials — not generic film
+    knowledge. The reading material may be longer than what's directly relevant;
+    concentrate on the chapters or passages that address {subtopic} and skim the
+    rest.
 
     Output structure (use exactly this markdown skeleton):
 
@@ -28,18 +35,22 @@ write_notes:
     ## What is {subtopic} All About?
     [Explain purpose and relevance, with a recent web-sourced example.]
 
-    ## [Question 1, e.g. "Why Do Movies Use This Technique?"]
-    [Answer using reading materials but don't mention them. Include a modern example
-    from web search. Address a student doubt directly.]
+    ## [Question 1 — frame as: What is it & why does it matter?]
+    [Define the concept and explain its relevance, using one specific idea from
+    the reading materials and a modern film example. Address a student doubt
+    directly.]
 
-    ## [Question 2, e.g. "How Does This Work in Films?"]
-    [Explain with reading-material insights, an analogy, and a web-sourced example.]
+    ## [Question 2 — frame as: How does it work mechanically?]
+    [Explain the underlying process or structure using a reading-material insight,
+    an analogy, and a web-sourced example.]
 
-    ## [Question 3, e.g. "What's a Key Element Here?"]
-    [Detail a core concept, with a popular and a recent film example.]
+    ## [Question 3 — frame as: What is a key element or principle?]
+    [Detail one core concept from the reading material in depth, with a popular
+    film example and a recent one.]
 
-    ## [Question 4, e.g. "How Can I Apply This?"]
-    [Practical steps for analysis or creation, plus a web-sourced tip.]
+    ## [Question 4 — frame as: How do I apply it, and what's a common mistake?]
+    [Give practical steps for analysis or creation, plus one common pitfall
+    students should avoid, plus a web-sourced tip.]
 
     ## What's the Point of All This?
     [Summarise importance, address one final doubt, encourage practice.]
@@ -65,6 +76,9 @@ write_notes:
     - Mention reading material titles inline; only in the Reference Materials section.
     - Include hashtags or asterisks/stars in the content.
     - Ask the student a follow-up like "Would you like help with another part?".
+    - Use framing like "According to the book...", "The reading materials state...",
+      or any phrase that signals a source. State the concept directly.
+    - Repeat the same film example in more than one section.
 
   expected_output: >
     A single markdown document approximately 2200-2400 words long, following the

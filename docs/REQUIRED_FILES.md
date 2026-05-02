@@ -33,7 +33,7 @@ Filenames as `quiz_crew/data/reading_materials.yaml` expects them (with extensio
 
 > One non-file entry exists: `https://www.celtx.com/` and `https://www.studiovity.com/` are mapped to subtopic "screenwriting softwares". No download needed — they're literal URLs passed through to the prompt.
 
-## Institutional / Parameter docs (14 — used by `assignment_crew`)
+## Institutional / Parameter docs (13 — used by `assignment_crew`)
 
 Unique `.docx` / Google Doc parameter files from `assignment_crew/data/evaluation_documents.yaml`:
 
@@ -47,12 +47,11 @@ Unique `.docx` / Google Doc parameter files from `assignment_crew/data/evaluatio
 | 6 | `A4.docx` | docx |
 | 7 | `A5.docx` | docx |
 | 8 | `A6.docx` | docx |
-| 9 | `A7.docx` | docx |
-| 10 | `Assignment - Parameters.docx` | docx |
-| 11 | `SEMESTER I - IDS I - RESEARCH` | Google Doc |
-| 12 | `IDS SEM I-SPW` | Google Doc (also used by quiz/notes crews) |
-| 13 | `IDS SEM II - parameters_dialogue` | Google Doc (also used by quiz/notes crews) |
-| 14 | `IDS SEM II-Blocking and Staging` | Google Doc |
+| 9 | `Assignment - Parameters.docx` | docx |
+| 10 | `SEMESTER I - IDS I - RESEARCH` | Google Doc |
+| 11 | `IDS SEM I-SPW` | Google Doc (also used by quiz/notes crews) |
+| 12 | `IDS SEM II - parameters_dialogue` | Google Doc (also used by quiz/notes crews) |
+| 13 | `IDS SEM II-Blocking and Staging` | Google Doc |
 
 ## Activity-flag values (NOT files — no download needed)
 
@@ -67,5 +66,5 @@ Unique `.docx` / Google Doc parameter files from `assignment_crew/data/evaluatio
 ## Totals
 
 - **20 PDFs** (books)
-- **14 institutional docs** (10 `.docx` + 4 Google Docs)
-- **= 34 unique files**
+- **13 institutional docs** (9 `.docx` + 4 Google Docs)
+- **= 33 unique files**
