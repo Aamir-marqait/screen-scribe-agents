@@ -18,10 +18,23 @@ write_quiz:
       - "question"           (string)
       - "options"            (array of exactly 4 strings, all distinct)
       - "correct_option_id"  (integer 0-3, index of correct answer)
-      - "Correct_answer_explanation" (2-3 sentence explanation grounded in the
-        reading materials)
+      - "Correct_answer_explanation" (2-3 sentences that reference the specific
+        concept or principle from the source — not generic film knowledge)
 
     Rules:
+    - Across the 5 questions, mix types: at least 1 conceptual (definition or
+      principle), at least 2 application (apply a concept to a film, scene, or
+      scenario), at least 1 analytical (compare, contrast, or distinguish), and
+      at least 1 recall (a specific fact, term, or technique from the source).
+      Do not make all 5 the same type.
+    - The 5 questions must collectively cover at least 3 distinct sections,
+      ideas, or chapters from the reading materials. Do not cluster every
+      question around the same concept.
+    - Every wrong option must be plausible — a real concept the student could
+      realistically confuse with the correct answer. Distractors should come
+      from related ideas in the same source material when possible. Never use
+      absurd, off-topic, or trivially-wrong options. A well-prepared student
+      should pause before choosing the right answer.
     - Each question's correct_option_id must vary across the 5 — do not put
       the right answer at the same index every time. Aim for a roughly random
       distribution.

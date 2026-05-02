@@ -4,9 +4,7 @@ from app.crews.quiz_crew.crew import lookup_reading_materials as quiz_materials
 
 
 def test_assignment_evaluation_doc_known():
-    assert lookup_evaluation_document("Film Analysis") == (
-        "IDS SEM I-Film diary   Assignment - Parameters.docx"
-    )
+    assert lookup_evaluation_document("Film Analysis") == "IDS SEM I-Film diary"
 
 
 def test_assignment_evaluation_doc_unknown():

@@ -19,6 +19,20 @@ generate_assignment:
       essay. Examples: rewriting a scene's emotional arc, blocking a scene,
       recording a video exercise, building a storyboard or shooting script,
       reflecting on an in-class group activity.
+    - The Task section must specify all three of: (1) a concrete deliverable
+      artifact (e.g. storyboard, recorded scene, blocking diagram, dialogue
+      rewrite, observation log, performance recording), (2) a clear evaluation
+      moment (in-class screening, peer critique, group walkthrough, instructor
+      review), and (3) a real-world frame (a specific scene to rework, a real
+      situation to observe, a defined setup to attempt). If any of the three
+      is missing, redesign before outputting.
+    - The Task instructions must use concrete action verbs (rewrite, block,
+      record, storyboard, stage, observe, capture, perform, edit, rehearse).
+      "Analyze", "discuss", or "reflect on" may appear only as supporting verbs,
+      never as the primary task.
+    - Tasks must not be summaries, comparative essays, or "analyze and discuss"
+      prompts. The output must be a creative or practical artifact the student
+      produces, not a written analysis.
     - Never reference file extensions (.pdf, .docx), source tags, or URLs.
     - Never mention due dates.
     - Never refer to yourself, AI, or roles.
@@ -34,8 +48,12 @@ generate_assignment:
       Dialogue and Structure                                  20
       Improvisation and Performance Nuance                    20
       Use of Digital Tools, VFX & Story Structure             20
-    Otherwise infer rubric criteria from the evaluation document name; keep
-    the total at 100.
+    Otherwise infer rubric criteria from the evaluation document text above;
+    keep the total at 100. Each criterion label must come from a specific
+    learning outcome or skill named in the evaluation document — avoid generic
+    labels like "Quality", "Creativity", "Effort", or "Presentation". Use
+    precise outcome-based labels such as "Visual continuity across shots",
+    "Use of subtext in dialogue", or "Blocking clarity in two-character scenes".
 
     Output exactly the markdown structure below.
 
@@ -74,7 +92,9 @@ revise_assignment:
   description: >
     Revise the existing assignment based on the lecturer's revision notes.
     Maintain the structure and tone of the original; reframe only what's
-    necessary.
+    necessary. Sections the lecturer has not asked to change must be preserved
+    verbatim — do not rewrite Objective, Task, Submission Format, or Rubric
+    unless the revision notes explicitly target that section.
 
     Subtopic: "{subtopic}"
     Evaluation document: {evaluation_document}
@@ -119,6 +139,11 @@ revise_assignment:
         Improvisation and Performance Nuance                    20
         Use of Digital Tools, VFX & Story Structure             20
     - Never rewrite the full assignment unless major revision is requested.
+    - If the revision touches the Task section, the rewritten Task must still
+      satisfy the activity-quality checklist (concrete deliverable + clear
+      evaluation moment + real-world frame) and use concrete action verbs
+      (rewrite, block, record, storyboard, stage, observe, capture, perform,
+      edit, rehearse) — never as a summary or "analyze and discuss" prompt.
 
     Output exactly:
 
