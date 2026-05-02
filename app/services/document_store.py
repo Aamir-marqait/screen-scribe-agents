@@ -13,14 +13,18 @@ same interface.
 
 from __future__ import annotations
 
+import time
 import urllib.parse
 
 from app.config import get_settings
+from app.core.logging import get_logger, log_extra
 from app.services.file_fetch import fetch_plain_text
 
 BUCKET = "curriculum"
 
 _CACHE: dict[str, str] = {}
+
+logger = get_logger(__name__)
 
 
 def _public_url(filename: str) -> str:
@@ -40,9 +44,18 @@ async def get_document_text(filename: str) -> str:
     Returns ``""`` for entries that aren't real files (URLs, missing uploads).
     """
     if not filename or filename.startswith("http"):
+        logger.info(
+            "curriculum.skip",
+            extra=log_extra(filename=filename, reason="not_a_bucket_file"),
+        )
         return ""
     if filename in _CACHE:
-        return _CACHE[filename]
+        cached = _CACHE[filename]
+        logger.info(
+            "curriculum.cache_hit",
+            extra=log_extra(filename=filename, chars=len(cached), empty=not cached),
+        )
+        return cached
 
     base = filename
     lower = filename.lower()
@@ -52,9 +65,41 @@ async def get_document_text(filename: str) -> str:
             break
 
     url = _public_url(base + ".txt")
+    started = time.perf_counter()
     try:
         text = await fetch_plain_text(url)
-    except Exception:
+        duration_ms = round((time.perf_counter() - started) * 1000, 2)
+        if text:
+            logger.info(
+                "curriculum.fetch_ok",
+                extra=log_extra(
+                    filename=filename,
+                    resolved=base + ".txt",
+                    chars=len(text),
+                    duration_ms=duration_ms,
+                ),
+            )
+        else:
+            logger.warning(
+                "curriculum.fetch_empty",
+                extra=log_extra(
+                    filename=filename,
+                    resolved=base + ".txt",
+                    duration_ms=duration_ms,
+                ),
+            )
+    except Exception as exc:
+        duration_ms = round((time.perf_counter() - started) * 1000, 2)
+        logger.warning(
+            "curriculum.fetch_failed",
+            extra=log_extra(
+                filename=filename,
+                resolved=base + ".txt",
+                url=url,
+                duration_ms=duration_ms,
+                error=str(exc)[:300],
+            ),
+        )
         text = ""
 
     _CACHE[filename] = text
@@ -63,9 +108,34 @@ async def get_document_text(filename: str) -> str:
 
 async def get_documents_text(filenames: list[str]) -> str:
     """Concatenate text for multiple files into one prompt block."""
+    if not filenames:
+        logger.info("curriculum.lookup_empty", extra=log_extra(reason="no_filenames"))
+        return ""
+
+    logger.info(
+        "curriculum.lookup_start",
+        extra=log_extra(count=len(filenames), filenames=filenames),
+    )
+
     parts: list[str] = []
+    used: list[str] = []
+    missing: list[str] = []
     for f in filenames:
         text = await get_document_text(f)
         if text:
             parts.append(f"--- {f} ---\n{text}")
-    return "\n\n".join(parts)
+            used.append(f)
+        else:
+            missing.append(f)
+
+    combined = "\n\n".join(parts)
+    logger.info(
+        "curriculum.lookup_done",
+        extra=log_extra(
+            requested=len(filenames),
+            used=used,
+            missing=missing,
+            total_chars=len(combined),
+        ),
+    )
+    return combined
