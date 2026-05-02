@@ -77,11 +77,20 @@ def run_in_background(job_id: str, coro_factory: Callable[[], Awaitable[Any]]) -
     """
 
     async def runner() -> None:
+        from app.core.errors import classify_upstream_error
+        from app.core.logging import get_logger, log_extra
+
+        log = get_logger("app.jobs")
         _set(job_id, status="running")
         try:
             result = await coro_factory()
             _set(job_id, status="completed", result=result, finished_at=time.time())
         except Exception as exc:  # noqa: BLE001 — we want to capture any failure
-            _set(job_id, status="error", error=str(exc), finished_at=time.time())
+            err = classify_upstream_error(exc)
+            log.exception(
+                "job.failed",
+                extra=log_extra(job_id=job_id, code=err.code, status_code=err.status_code),
+            )
+            _set(job_id, status="error", error=err.message, finished_at=time.time())
 
     asyncio.create_task(runner())
